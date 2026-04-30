@@ -1,36 +1,25 @@
-import { Ionicons } from "@expo/vector-icons";
-import { router } from "expo-router";
-import React, { useState } from "react";
-import {
-  ImageBackground,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { View, Text, StyleSheet, Button } from "react-native";
+import { useRouter } from "expo-router";
 
-export default function Login() {
-  const [passwordVisible, setPasswordVisible] = useState(false);
+export default function HomeScreen() {
+  const router = useRouter();
+
+  const handleLogout = () => {
+    // clear token here if using AsyncStorage
+    router.replace("../login");
+  };
 
   return (
     <View style={styles.container}>
-      {/* Background Image */}
-      <ImageBackground
-        source={{
-          uri: "https://images.newscientist.com/wp-content/uploads/2020/10/05175158/2-oct_elephant.jpg?crop=1:1,smart&width=1200&height=1200&upscale=true",
-        }}
-        style={styles.header}
-        imageStyle={{ opacity: 0.6 }}
-      >
-        <Text style={styles.title}>EleSafe Lanka</Text>
-      </ImageBackground>
+      <Text style={styles.title}>Welcome to EleSafe 🐘</Text>
 
-      {/* Form Section */}
-      <View style={styles.form}>
-        <Text style={styles.welcome}>Welcome Back</Text>
-        <Text style={styles.subtitle}>
-          Sign in to report incidents and track activity.
+      <Text style={styles.subtitle}>
+        Human - Elephant Conflict Alert System
+      </Text>
+
+      <View style={styles.card}>
+        <Text style={styles.cardText}>
+          📍 Track elephant movements
         </Text>
 
         {/* Username */}
@@ -84,13 +73,15 @@ export default function Login() {
   Don't have an account?{" "}
   <Text
     style={{ color: "#00ff66",  }}
-    onPress={() => router.push("/registerPage")}
+    onPress={() => router.push("/register")}
   >
     Register Here
   </Text>
 </Text>
 
       </View>
+
+      <Button title="Logout" onPress={handleLogout} />
     </View>
   );
 }
@@ -98,91 +89,29 @@ export default function Login() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#021d0f",
-  },
-  header: {
-    height: 200,
     justifyContent: "center",
     alignItems: "center",
-  },
-  title: {
-    color: "#fff",
-    fontSize: 28,
-    fontWeight: "bold",
-  },
-  form: {
-    flex: 1,
     padding: 20,
   },
-  welcome: {
-    color: "#fff",
-    fontSize: 24,
+  title: {
+    fontSize: 26,
     fontWeight: "bold",
-    marginBottom: 5,
-  },
-  subtitle: {
-    color: "#aaa",
-    marginBottom: 20,
-  },
-  label: {
-    color: "#888",
-    fontSize: 12,
-    marginTop: 10,
-    marginBottom: 5,
-  },
-  inputContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    backgroundColor: "#0b2e1a",
-    borderRadius: 10,
-    padding: 10,
     marginBottom: 10,
   },
-  input: {
-    flex: 1,
-    color: "#fff",
-    marginLeft: 10,
+  subtitle: {
+    fontSize: 16,
+    color: "gray",
+    marginBottom: 30,
   },
-  forgot: {
-    color: "#00ff66",
-    textAlign: "right",
+  card: {
+    backgroundColor: "#f2f2f2",
+    padding: 20,
+    borderRadius: 10,
+    width: "100%",
     marginBottom: 20,
   },
-  loginBtn: {
-    flexDirection: "row",
-    backgroundColor: "#00ff66",
-    padding: 15,
-    borderRadius: 12,
-    justifyContent: "center",
-    alignItems: "center",
-    gap: 10,
-  },
-  loginText: {
-    fontWeight: "bold",
-    color: "#000",
-  },
-  divider: {
-    color: "#888",
-    textAlign: "center",
-    marginVertical: 20,
-  },
-  socialRow: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-  },
-  socialBtn: {
-    backgroundColor: "#0b2e1a",
-    padding: 12,
-    borderRadius: 10,
-    width: "48%",
-    alignItems: "center",
-  },
-  socialText: {
-    color: "#fff",
-  },
-  footer: {
-    color: "#aaa",
-    textAlign: "center",
-    marginTop: 20,
+  cardText: {
+    fontSize: 16,
+    marginBottom: 10,
   },
 });
