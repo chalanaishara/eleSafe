@@ -84,7 +84,7 @@ export default function Login() {
   Don't have an account?{" "}
   <Text
     style={{ color: "#00ff66",  }}
-    onPress={() => router.push("/register")}
+    onPress={() => router.push("/registerPage")}
   >
     Register Here
   </Text>

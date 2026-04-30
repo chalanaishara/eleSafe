@@ -1,4 +1,5 @@
 import { Picker } from "@react-native-picker/picker";
+import { router } from "expo-router";
 import React, { useState } from "react";
 import {
   ImageBackground,
@@ -129,8 +130,17 @@ export default function Register() {
       <TouchableOpacity style={styles.button} onPress={handleSubmit}>
         <Text style={styles.buttonText}>Register</Text>
       </TouchableOpacity>
+
+      <TouchableOpacity onPress={() => router.push("/loginPage")}>
+  <Text style={{ color: "#00ff66", textAlign: "center",marginBottom:150 }}>
+    Already have an account? Login
+  </Text>
+</TouchableOpacity>
+
     </ScrollView>
   );
+
+  
 }
 
 const styles = StyleSheet.create({
